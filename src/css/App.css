@@ -1,0 +1,483 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  all: unset;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+nav > ul {
+  list-style: none;
+}
+
+nav button {
+  display: block;
+  height: 69px;
+  font-size: 20px;
+  padding: 5px 10px;
+}
+
+.td_none {
+  text-decoration: none;
+}
+
+.d-flx {
+  display: flex;
+}
+
+.d_Il_flx {
+  display: inline-flex;
+}
+
+.flx_column {
+  flex-direction: column;
+}
+
+.flx_row {
+  flex-direction: row;
+}
+
+.al_Items_C {
+  align-items: center;
+}
+
+.j_Items_C {
+  justify-items: center;
+}
+
+.j_Content-C {
+  justify-content: center;
+}
+
+.jcsb {
+  justify-content: space-between;
+}
+
+.jcse {
+  justify-content: space-evenly;
+}
+
+#ProfileContainerInner {
+  display: block;
+  width: 70%;
+  margin: auto;
+  border: 1px solid #a1a1a1;
+  padding: 20px;
+  height: calc(100dvh - 111px);
+  box-shadow: 0 0 10px 5px #b1b1b1;
+}
+
+.ml_auto {
+  margin-left: auto;
+}
+
+nav {
+  width: 100%;
+  height: 100%;
+}
+
+.d_none {
+  display: none !important;
+}
+
+.d_block {
+  display: block !important;
+}
+
+#myAccount,
+#customerCara {
+  background-repeat: no-repeat;
+  width: 35px;
+  margin: 10px 20px;
+  height: 35px;
+  border-radius: 50%;
+  background-size: contain;
+}
+
+#myAccount {
+  background-image: url("../assets/icons/person-fill.svg");
+}
+
+#customerCara {
+  background: url("../assets/icons/female-services-support-icon.svg");
+}
+
+#Nav_Drop_Down {
+  background-image: url("../assets/icons/list.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 55px;
+  width: 55px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#showHide * {
+  width: 100%;
+}
+
+#hide {
+  background: url("../assets/icons/x.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 70px;
+  padding: 10px;
+  width: 70px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.btn3:hover {
+  border-bottom-right-radius: 10% 50px !important;
+}
+
+#showHide.DD {
+  height: 360px;
+  width: 0;
+  border-bottom-right-radius: 110% 140px;
+  position: absolute;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+}
+#showHide.DD.d-flx{
+  width: 120px;
+  transition: width 5000ms;
+}
+
+#hide:hover {
+  transition: transform 200ms;
+  transform: scale(1.2);
+}
+
+#Search_container {
+  position: relative;
+  margin: auto;
+  width: 720px;
+}
+
+.locationsInp {
+  border: none;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+  padding: 5px 0px;
+}
+
+.locationsInp:focus {
+  outline: none;
+}
+
+.SearchLabel {
+  color: darkgray;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.SearchLabel.locationsLabel {
+  width: 100%;
+}
+
+.SearchlocationsDiv {
+  padding: 5px 15px;
+  width: 230px;
+}
+
+.borderRightFormDiv {
+  border-right: 1px solid #101010;
+}
+
+.formBg {
+  height: 120px;
+  background: white;
+}
+
+#Search_container > :first-child {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+#Search_container > :nth-child(3) {
+  padding: 5px 15px 5px 25px;
+}
+
+#Search_container > :last-child {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+#DatePickerBtn {
+  height: 20px;
+  width: 20px;
+  background: url(../assets/icons/vectorstock_43758857.svg);
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+#DatePickerBtn:hover {
+  transition: transform 200ms;
+  transform: scale(1.3);
+}
+
+#switch {
+  z-index: 10;
+  position: absolute;
+  left: 226px;
+  background: #fff;
+  background-image: url(../assets/icons/arrow-left-right.svg);
+  height: 30px;
+  width: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 4px 2px #d1d1d1;
+}
+
+#switch:hover {
+  transition: transform 200ms ease;
+  transform: scale(1.2);
+}
+
+#PopUpCalender {
+  position: absolute;
+  top: 40px;
+}
+
+.d_grid {
+  display: grid;
+  width: 400px;
+}
+
+.d_g_7 {
+  grid-template-columns: repeat(7, 1fr);
+}
+
+#PopUpCalender {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.date {
+  text-align: center;
+  cursor: pointer;
+}
+
+.date:hover {
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+#Dates {
+  border: 1px solid black;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#weekDayNames {
+  text-align: center;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#weekDayNames > :first-child {
+  border-top-left-radius: 10px;
+}
+
+#weekDayNames > :last-child {
+  border-top-right-radius: 10px;
+}
+
+#Year_navigation,
+#Month_navigation {
+  padding: 10px 10px;
+  align-items: center;
+}
+
+.Z_2 {
+  z-index: 2;
+}
+
+#Year_navigation > button,
+#Month_navigation > button {
+  height: 30px;
+  width: 30px;
+  padding: 10px 10px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #c1c1c1;
+}
+
+#Year_navigation > button:hover,
+#Month_navigation > button:hover {
+  box-shadow: 0 0 4px 1px #c1c1c1;
+}
+
+#Year_navigation > :first-child,
+#Month_navigation > :first-child {
+  background-image: url(../assets/icons/chevron-left.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#Year_navigation > :last-child,
+#Month_navigation > :last-child {
+  background-image: url(../assets/icons/chevron-right.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#LocationselectorPopup {
+  position: absolute;
+}
+
+#LocationselectorPopup {
+  background: #f1f1f1;
+  border-radius: 10px;
+  top: 80px;
+}
+
+#LocationselectorPopup > button {
+  padding: 5px;
+  border-bottom: 1px solid #a1a1a1;
+  cursor: pointer;
+}
+
+#LocationselectorPopup > :last-child {
+  border-bottom: none;
+}
+
+#LocationselectorPopup > button:hover {
+  background: #fff;
+}
+
+.t_a_c {
+  text-align: center;
+}
+
+#ccNmberBtn {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #a1a1a1;
+  border-radius: 5px;
+}
+
+#ccNmberBtn:hover {
+  background-color: #f1f1f1;
+  transform: scale(1.2);
+  transition: transform 200ms ease;
+  box-shadow: 0 0 10px 2px #a1a1a1;
+}
+
+#customerCareInfo {
+  min-height: calc(100dvh - 71px);
+  min-width: 300px;
+  display: block;
+  background: #f1f1f1;
+  padding: 30px 20px;
+  flex-shrink: 5;
+}
+
+#customerCareInfo * {
+  margin: 10px;
+}
+
+#CustomerCareImage {
+  max-height: calc(100dvh - 71px);
+  width: 100%;
+  object-fit: inherit;
+  flex-shrink: 0.5;
+}
+
+#UserProfileImageLarge {
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  background: #000;
+}
+
+.UA_button {
+  border-bottom: 1px solid #c1c1c1;
+  width: 200px;
+  padding: 5px 10px;
+  text-align: center;
+  color: #000;
+  font-weight: 600;
+}
+
+.UA_button:hover {
+  transform: scale(1.2);
+  transition: transform 200ms ease;
+  font-weight: 700;
+}
+
+.LoginInputFeilds {
+  margin: 10px;
+  font-size: 20px;
+  padding: 5px 10px;
+}
+
+#LoginPasswordShowHide,#PasswordShowHide {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+#LoginPasswordShowHide:hover {
+  transform: scale(1.3);
+  transition: transform 100ms;
+}
+
+.signUpInputs {
+  margin: 10px;
+  font-size: 20px;
+  padding: 5px 10px;
+}
+
+#SignUp,
+#loginBtn {
+  border: 1px solid #c1c1c1;
+  padding: 10px 20px;
+  font-size: 20px;
+  background: #555;
+  color: #fff;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+#SignUp:hover,
+#loginBtn:hover {
+  transform: scale(1.2);
+  transition: transform 200ms;
+}
+
+span.error {
+  color: red;
+  display: block;
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+.blip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% -50%);
+  background: #000;
+  padding: 5px 10px;
+  font-size: 15px;
+  color: white;
+  border-radius: 5px;
+}

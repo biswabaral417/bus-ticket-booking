@@ -1,0 +1,62 @@
+@media (prefers-color-scheme: dark) {
+  /* dark themed css  */
+  /* css for nav button */
+
+  .NavButton {
+    text-decoration: none;
+    color: #f1f1f1;
+  }
+
+  .NavButton:hover {
+    background-color: #222;
+  }
+
+  /* css for headerr */
+  header {
+    background: #000;
+  }
+
+  #myAccount {
+    background-color: #fff;
+  }
+
+  #myAccount:hover {
+    box-shadow: 0 0 13px 3px white !important;
+  }
+  #customerCara:hover {
+    box-shadow: 0 0 13px 3px black !important;
+  }
+  a.active > button {
+    background-color: #333;
+  }
+  a.active > button.btn3 {
+    border-bottom-right-radius: 10% 50px !important;
+  }
+  a.active > button#myAccount {
+    box-shadow: 0px 0px 6px 2px white;
+  }
+  a.active > button#customerCara {
+    box-shadow: 0px 0px 6px 2px black;
+  }
+
+  #Nav_Drop_Down {
+    filter: invert(100%);
+  }
+  #hide {
+    filter: invert(100%);
+  }
+
+  #showHide.DD {
+    background: #000;
+  }
+  #customerCara {
+    filter: invert(100%);
+  }
+  nav ul {
+    align-items: center;
+  }
+}
+
+input::placeholder {
+  color: #a1a1a1;
+}
