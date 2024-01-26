@@ -1,8 +1,8 @@
 const express = require("express");
 const LogoutApi = express.Router();
-const UserData = require("../../models/userModel");
+const UserData = require("../../../models/userModel");
 const jwt = require('jsonwebtoken')
-require("../../DB/conn");
+require("../../../DB/conn");
 LogoutApi.use(express.json());
 
 LogoutApi.get("/api/logout", async (req, res) => {

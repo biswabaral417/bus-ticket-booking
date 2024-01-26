@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import PopUpCalender from "./PopUpCalender";
 
-const CustomDatePicker = ({ DatePickerVisiblity, setDatePickerVisiblity }) => {
-  const [finalDate, setFinalDate] = useState(new Date());
-  // const [DatePickerVisiblity, setDatePickerVisiblity] = useState(false)
+const CustomDatePicker = ({ DatePickerVisiblity, setDatePickerVisiblity,finalDate,setFinalDate }) => {
   const monthName = (year, month) => {
     return new Date(year, month, 1).toUTCString().split(" ")[2];
   };
-
   const dpv = (e) => {
     e.stopPropagation();
     setDatePickerVisiblity(!DatePickerVisiblity);
   };
+  console.log(new Date(JSON.parse(JSON.stringify(finalDate))))
 
   return (
     <>

@@ -6,23 +6,26 @@ import eyefill from "../../assets/icons/eye-fill.svg";
 export default function ChangePassword() {
   const ChangePasswordInps = (e) => {
     const { name, value } = e.target;
-    setInputTypeForPassword((prevInput) => ({
+    setChangePasswordinputs((prevInput) => ({
       ...prevInput,
       [name]: value,
     }));
   }
   const ChangeThePassword = async () => {
-    const res = fetch('/api/chagePassword', {
+    console.log(changePasswordinputs)
+    const res = await fetch('/api/changePassword', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(inputTypeForPassword),
-      credentials: "include"
+      body: JSON.stringify(changePasswordinputs),
+      credentials: 'include'
+      
     })
-    const data = await res
+    const data = await res.json()
     console.log(data)
   }
+  const [changePasswordinputs, setChangePasswordinputs] = useState({})
   const [inputTypeForPassword, setInputTypeForPassword] = useState("password");
   const [iconForPasswordVisiblity, setIconForPasswordVisiblity] = useState(eyeSlashfill)
 
@@ -42,7 +45,7 @@ export default function ChangePassword() {
           <div id="Logincontainer" style={{ padding: "20px" }}>
             <h1 className="t_a_c">Change Password</h1>
             <div
-              id="loginInputs"
+              id="changepasswordloginInputs"
               className="d-flx flx_column"
               style={{ padding: "20px" }}
             >
@@ -52,14 +55,16 @@ export default function ChangePassword() {
                   className="LoginInputFeilds"
                   placeholder="old Password"
                   name="oldPassword"
-                  onChange={switchPasswordInpType}
+                  onChange={ChangePasswordInps}
+                  value={changePasswordinputs.oldPassword === undefined ? "" : changePasswordinputs.oldPassword}
                 />
                 <input
                   type={inputTypeForPassword}
                   className="LoginInputFeilds"
                   placeholder="new password"
                   name="newPassword"
-                  onChange={switchPasswordInpType}
+                  onChange={ChangePasswordInps}
+                  value={changePasswordinputs.newPassword === undefined ? "" : changePasswordinputs.newPassword}
                 />
                 <div className='d-flx al_Items_C'>
 
@@ -69,6 +74,7 @@ export default function ChangePassword() {
                     placeholder="confirm new password"
                     name="confirmNewPassword"
                     onChange={ChangePasswordInps}
+                    value={changePasswordinputs.confirmNewPassword === undefined ? "" : changePasswordinputs.confirmNewPassword}
                   />
                   <button
                     id="PasswordShowHide"

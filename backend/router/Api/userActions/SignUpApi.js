@@ -1,8 +1,8 @@
 const express = require("express");
 const { check, validationResult } = require("express-validator");
 const signUpApi = express.Router();
-const UserData = require("../../models/userModel");
-require("../../DB/conn");
+const UserData = require("../../../models/userModel");
+require("../../../DB/conn");
 
 signUpApi.use(express.json());
 

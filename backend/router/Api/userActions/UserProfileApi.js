@@ -1,8 +1,8 @@
 const express=require('express')
-const userAuth = require('../../middleware/userAuth')
+const userAuth = require('../../../middleware/userAuth')
 const UserProfileApi=express.Router()
-const UserData=require('../../models/userModel')
-require('../../DB/conn')
+const UserData=require('../../../models/userModel')
+require('../../../DB/conn')
 UserProfileApi.use(express.json())
 
 UserProfileApi.get('/api/userProfile',userAuth,async (req,res)=>{

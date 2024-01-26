@@ -1,11 +1,13 @@
 import React from "react";
 import DatePicker from "../customElementsComponents/DatePicker";
 import { useState, useRef } from "react";
+import {useNavigate} from 'react-router-dom'
 import LocationSelector from "../customElementsComponents/LocationSelector";
-import SearchResults from "./OrtherComps/SearchResults";
 import CurrentOffers from "./OrtherComps/CurrentOffers";
 
 export default function UserServices() {
+  const navigate=useNavigate()
+  const [finalDate, setFinalDate] = useState(new Date());
   const [DatePickerVisiblity, setDatePickerVisiblity] = useState(false);
   const showit = () => {
     setDatePickerVisiblity(!DatePickerVisiblity);
@@ -18,6 +20,7 @@ export default function UserServices() {
   const [fromLocation, setFromLocation] = useState("");
   const [ToLocation, setToLocation] = useState("");
   const [pos, setPos] = useState("");
+
   const HandleLocationChange = (e) => {
     if (e.target.id === "FromLocation") {
       setPos("from");
@@ -38,13 +41,19 @@ export default function UserServices() {
     setFromLocation(ToLocation);
     setToLocation(tempLocation);
   };
+  const ShowSearchResults = () => {
+    navigate('/searchResults',
+      { replace:true,state:{finalDate, ToLocation, fromLocation} })
+
+  }
+  
   return (
     <>
       <div style={{ background: "red", padding: "10px" }}>
         <h1 className="t_a_c" style={{ padding: "20px", color: "white" }}>
           Travel all Over Nepal
         </h1>
-        <form action="">
+        <form action="" onSubmit={ShowSearchResults} >
           <div id="Search_container" className="d-flx j_Content-C al_Items_C ">
             <div className="SearchlocationsDiv borderRightFormDiv formBg d-flx flx_column   j_Content-C">
               <label
@@ -112,6 +121,8 @@ export default function UserServices() {
               <DatePicker
                 DatePickerVisiblity={DatePickerVisiblity}
                 setDatePickerVisiblity={setDatePickerVisiblity}
+                finalDate={finalDate}
+                setFinalDate={setFinalDate}
               />
             </div>
             <button
@@ -135,7 +146,6 @@ export default function UserServices() {
         <div></div>
       </div>
       <CurrentOffers />
-      <SearchResults />
     </>
   );
 }

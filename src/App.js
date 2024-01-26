@@ -13,6 +13,11 @@ import Login from "./components/userComps/Login";
 import Signup from "./components/userComps/Signup";
 import UserContextProvider from "./contexts/UserContext";
 import ChangePassword from "./components/userProfileActions/ChangePassword";
+import ChangeEmail from "./components/userProfileActions/ChangeEmail";
+import ChangeAddress from "./components/userProfileActions/ChangeAddress";
+import ChangePhoneNumber from "./components/userProfileActions/ChangePhoneNumber";
+import ChangeProfileImage from "./components/userProfileActions/ChangeProfileImage";
+import SearchResults from "./components/userComps/OrtherComps/SearchResults";
 function App() {
   return (
     <BrowserRouter>
@@ -29,6 +34,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/changePassword" element={<ChangePassword/>}/>
+          <Route path="/changeEmail" element={<ChangeEmail/>}/>
+          <Route path="/changeAddress" element={<ChangeAddress/>}/>
+          <Route path="/changePhone" element={<ChangePhoneNumber/>}/>
+          <Route path="/changeProfileImage" element={<ChangeProfileImage/>}/>
+          <Route path="/searchResults" element={<SearchResults/>
+}/>
         </Routes>
       </UserContextProvider>
     </BrowserRouter>

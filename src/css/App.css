@@ -481,3 +481,7 @@ span.error {
   color: white;
   border-radius: 5px;
 }
+header{
+  z-index: 55;
+  position: relative;
+}

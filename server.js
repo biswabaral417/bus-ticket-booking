@@ -33,12 +33,17 @@ app.get(/^\/(?!api).*/, function (req, res) {
 require("./backend/DB/conn"); // adding db connection
 
 //app.use('paths')
-app.use(require("./backend/router/Api/SignUpApi"));
-app.use(require("./backend/router/Api/LoginApi"));
-app.use(require("./backend/router/Api/LogoutApi"))
-app.use(require("./backend/router/Api/UserTokenTestApi"));
-app.use(require("./backend/router/Api/UserProfileApi"));
+app.use(require("./backend/router/Api/userActions/SignUpApi"));
+app.use(require("./backend/router/Api/userActions/LoginApi"));
+app.use(require("./backend/router/Api/userActions/LogoutApi"))
+app.use(require("./backend/router/Api/userActions/ChangePasswordApi"));
+app.use(require("./backend/router/Api/userActions/ChangeEmailApi"));
 
+app.use(require("./backend/router/Api/userActions/UserTokenTestApi"));
+app.use(require("./backend/router/Api/userActions/UserProfileApi"));
+app.use(require("./backend/router/Api/SearchBusesApi"));
+
+// require('./backend/router/Api/userActions/tempAPi')
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT} (HTTPS)`);
 });

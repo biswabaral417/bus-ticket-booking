@@ -1,10 +1,9 @@
 const express = require("express");
 const { check, validationResult } = require("express-validator");
 const LoginApi = express.Router();
-const UserData = require("../../models/userModel");
-const jwt=require('jsonwebtoken')
+const UserData = require("../../../models/userModel");
 const bcrypt=require('bcrypt')
-require("../../DB/conn");
+require("../../../DB/conn");
 LoginApi.use(express.json());
 
 LoginApi.post(
@@ -23,10 +22,14 @@ LoginApi.post(
 
         try {
             const Verify = await UserData.findOne({ email: req.body.email })
-            console.log(jwt.verify)
             if (Verify && await bcrypt.compare(req.body.password, Verify.password)) {
+
+                if (Verify.tokens.length > 3) {
+                    const tokensToKeep = Verify.tokens.slice(-3);
+                    Verify.tokens = tokensToKeep;
+                    await Verify.save();
+                }
                 const token = await Verify.generateAuthtoken();
-                console.log(token);
                 res.cookie("jwtoken", token, {
                     expires: new Date(Date.now() + 2630000000),
                     httpsOnly: true,
