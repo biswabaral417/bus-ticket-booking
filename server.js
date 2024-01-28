@@ -14,6 +14,13 @@ const httpsOptions = {
 
 const server = https.createServer(httpsOptions, app);
 const cookieParser = require("cookie-parser");
+const IO=require('socket.io')(server,{
+  cors:{
+    origin:['https://localhost:9000/bookTickets']
+  },
+  methods: ["GET", "POST"],
+  credentials: true  // Allow credentials (cookies) to be sent
+})//creating websocket in sae port as server
 
 app.use(express.json());
 app.use(cookieParser());
@@ -47,3 +54,6 @@ app.use(require("./backend/router/Api/SearchBusesApi"));
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT} (HTTPS)`);
 });
+IO.on("connection",socket=>{
+  console.log(socket.id)
+})

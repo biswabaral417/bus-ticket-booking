@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +13,7 @@ button {
   white-space: nowrap;
 }
 
-nav > ul {
+nav>ul {
   list-style: none;
 }
 
@@ -146,7 +147,8 @@ nav {
   top: 0;
   left: 0;
 }
-#showHide.DD.d-flx{
+
+#showHide.DD.d-flx {
   width: 120px;
   transition: width 5000ms;
 }
@@ -199,16 +201,16 @@ nav {
   background: white;
 }
 
-#Search_container > :first-child {
+#Search_container> :first-child {
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
 }
 
-#Search_container > :nth-child(3) {
+#Search_container> :nth-child(3) {
   padding: 5px 15px 5px 25px;
 }
 
-#Search_container > :last-child {
+#Search_container> :last-child {
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
 }
@@ -290,11 +292,11 @@ nav {
   border-top-right-radius: 10px;
 }
 
-#weekDayNames > :first-child {
+#weekDayNames> :first-child {
   border-top-left-radius: 10px;
 }
 
-#weekDayNames > :last-child {
+#weekDayNames> :last-child {
   border-top-right-radius: 10px;
 }
 
@@ -308,8 +310,8 @@ nav {
   z-index: 2;
 }
 
-#Year_navigation > button,
-#Month_navigation > button {
+#Year_navigation>button,
+#Month_navigation>button {
   height: 30px;
   width: 30px;
   padding: 10px 10px;
@@ -319,20 +321,20 @@ nav {
   border: 1px solid #c1c1c1;
 }
 
-#Year_navigation > button:hover,
-#Month_navigation > button:hover {
+#Year_navigation>button:hover,
+#Month_navigation>button:hover {
   box-shadow: 0 0 4px 1px #c1c1c1;
 }
 
-#Year_navigation > :first-child,
-#Month_navigation > :first-child {
+#Year_navigation> :first-child,
+#Month_navigation> :first-child {
   background-image: url(../assets/icons/chevron-left.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
 
-#Year_navigation > :last-child,
-#Month_navigation > :last-child {
+#Year_navigation> :last-child,
+#Month_navigation> :last-child {
   background-image: url(../assets/icons/chevron-right.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -348,17 +350,17 @@ nav {
   top: 80px;
 }
 
-#LocationselectorPopup > button {
+#LocationselectorPopup>button {
   padding: 5px;
   border-bottom: 1px solid #a1a1a1;
   cursor: pointer;
 }
 
-#LocationselectorPopup > :last-child {
+#LocationselectorPopup> :last-child {
   border-bottom: none;
 }
 
-#LocationselectorPopup > button:hover {
+#LocationselectorPopup>button:hover {
   background: #fff;
 }
 
@@ -428,7 +430,8 @@ nav {
   padding: 5px 10px;
 }
 
-#LoginPasswordShowHide,#PasswordShowHide {
+#LoginPasswordShowHide,
+#PasswordShowHide {
   height: 30px;
   width: 30px;
   cursor: pointer;
@@ -481,7 +484,29 @@ span.error {
   color: white;
   border-radius: 5px;
 }
-header{
+
+header {
   z-index: 55;
   position: relative;
+}
+
+.busSeat>svg {
+  height: 40px;
+  width: 40px;
+}
+
+.busSeat>svg>path {
+  fill: black;
+}
+
+.busSeat.booked>svg>path {
+  fill: red;
+}
+
+.busSeat.pending>svg>path {
+  fill: yellow;
+}
+
+.busSeat.available {
+  fill: black;
 }

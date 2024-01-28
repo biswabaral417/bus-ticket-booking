@@ -9,7 +9,7 @@ SearchBuses.post(
     async (req, res) => {
         try {
             const { fromLocation, ToLocation, finalDate } = req.body;
-            const day=new Date(finalDate).toLocaleDateString('en-US',{weekday:"long"})
+            const day = new Date(finalDate).toLocaleDateString('en-US', { weekday: "long" })
 
             // Use the $in operator to find buses with routes matching the search query
             const buses = await Bus.find({
@@ -17,11 +17,14 @@ SearchBuses.post(
                     $in: await BusRoutes.find({
                         From: fromLocation,
                         To: ToLocation,
-                        Days: day ,
+                        Days: day,
                     }).select('_id')
                 }
+            }).populate({
+                path: 'routes',
+                model: 'Routes',
             });
-            res.status(200).json( buses )
+            res.status(200).json(buses)
         } catch (error) {
             res.status(500).json({ error: "internal server error" })
         }

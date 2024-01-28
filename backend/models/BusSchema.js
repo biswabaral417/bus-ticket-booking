@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const busSchema = new mongoose.Schema({
-  routes:[{
-    type:mongoose.Schema.ObjectId,
-    required:true
+  routes: [{
+    type: mongoose.Schema.ObjectId,
+    required: true,
   }],
   agencyName: {
     type: String,
@@ -31,10 +31,19 @@ const busSchema = new mongoose.Schema({
               type: String,
               required: true,
             },
-            isOccupied: {
-              type: Boolean,
-              default: false,
-            },
+            bookings: [
+              {
+                date: {
+                  type: Date,
+                  required: true,
+                },
+                status: {
+                  type: String,
+                  enum: ["booked", "available", "pending"],
+                  default: "available",
+                },
+              },
+            ],
           },
         ],
       },
@@ -46,18 +55,29 @@ const busSchema = new mongoose.Schema({
   },
 });
 
+// Generate seat number based on row and column
+function generateSeatNumber(row, col) {
+  const seatLetter = col === 0 ? "A" : "B";
+  const seatNumber = col === 0 ? row : (row - 1) * 2 + col;
+  return `${seatLetter}${seatNumber}`;
+}
+
 busSchema.pre("save", function (next) {
   const numRows = this.busRows || 1; // Default to 1 row if busRows is not specified
   const rows = [];
+
   for (let i = 1; i <= numRows; i++) {
     const seats = [];
+
     const numSeats = i === 1 ? 3 : i === numRows ? 5 : 4;
+
     for (let j = 0; j < numSeats; j++) {
       seats.push({
-        seatNumber: j===0?i===1?"A1":`A${(i-1)*2}`:j===1?i===1?"B1":`A${((i-1)*2)+1}`:j===2?i===1?"B2":`B${((i-1)*2+1)}`:j===3?`B${((i-1)*2)+2}`:`B${(i-1)*2+3}`,
-        isOccupied: false,
+        seatNumber: generateSeatNumber(i, j),
+        bookings: [],
       });
     }
+
     rows.push({
       rowNumber: i,
       seats,

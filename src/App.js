@@ -18,6 +18,7 @@ import ChangeAddress from "./components/userProfileActions/ChangeAddress";
 import ChangePhoneNumber from "./components/userProfileActions/ChangePhoneNumber";
 import ChangeProfileImage from "./components/userProfileActions/ChangeProfileImage";
 import SearchResults from "./components/userComps/OrtherComps/SearchResults";
+import BookTickets from "./components/userComps/OrtherComps/BookTickets";
 function App() {
   return (
     <BrowserRouter>
@@ -38,8 +39,8 @@ function App() {
           <Route path="/changeAddress" element={<ChangeAddress/>}/>
           <Route path="/changePhone" element={<ChangePhoneNumber/>}/>
           <Route path="/changeProfileImage" element={<ChangeProfileImage/>}/>
-          <Route path="/searchResults" element={<SearchResults/>
-}/>
+          <Route path="/searchResults" element={<SearchResults/>}/>
+          <Route path="/bookTickets" element={<BookTickets/>}/>
         </Routes>
       </UserContextProvider>
     </BrowserRouter>
