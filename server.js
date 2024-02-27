@@ -14,13 +14,14 @@ const httpsOptions = {
 
 const server = https.createServer(httpsOptions, app);
 const cookieParser = require("cookie-parser");
-const IO=require('socket.io')(server,{
-  cors:{
-    origin:['https://localhost:9000/bookTickets']
+const IO = require('socket.io')(server, {
+  cors: {
+    origin: ['https://localhost:9000/bookTickets'],
+    methods: ["GET", "POST"],
+    credentials: true  // Allow credentials (cookies) to be sent
   },
-  methods: ["GET", "POST"],
-  credentials: true  // Allow credentials (cookies) to be sent
-})//creating websocket in sae port as server
+},)//creating websocket in sae port as server
+
 
 app.use(express.json());
 app.use(cookieParser());
@@ -50,10 +51,17 @@ app.use(require("./backend/router/Api/userActions/UserTokenTestApi"));
 app.use(require("./backend/router/Api/userActions/UserProfileApi"));
 app.use(require("./backend/router/Api/SearchBusesApi"));
 
+const buspending=require('./backend/router/sockets/busPending')
+
 // require('./backend/router/Api/userActions/tempAPi')
+
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT} (HTTPS)`);
 });
-IO.on("connection",socket=>{
+IO.on("connection", socket => {
   console.log(socket.id)
+  socket.on('seat-clicked',async (seatNumber, finalDate, selBus)=>{
+    const sendselBus=await buspending(seatNumber, finalDate, selBus)
+    IO.emit('busUpdate',sendselBus)
+  })
 })

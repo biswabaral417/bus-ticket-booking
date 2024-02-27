@@ -118,7 +118,9 @@ nav {
   margin-left: 10px;
   cursor: pointer;
 }
-
+.c_pointer{
+  cursor: pointer;
+}
 #showHide * {
   width: 100%;
 }
@@ -495,18 +497,17 @@ header {
   width: 40px;
 }
 
-.busSeat>svg>path {
-  fill: black;
+svg>path{
+  fill: green;
+}
+svg.pending>path {
+  fill: orange;
+}
+svg.booked>path {
+  fill: #d1d1d1;
+}
+svg.pending.selected>path{
+  fill: blue;
 }
 
-.busSeat.booked>svg>path {
-  fill: red;
-}
 
-.busSeat.pending>svg>path {
-  fill: yellow;
-}
-
-.busSeat.available {
-  fill: black;
-}

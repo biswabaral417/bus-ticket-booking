@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+
 export default function SearchResults() {
   const { finalDate, ToLocation, fromLocation } = useLocation().state;
   const [Buses, setBuses] = useState([])
@@ -16,7 +17,6 @@ export default function SearchResults() {
       }
       )
       const data = await res.json()
-      console.log(data)
       setBuses(data);
     }
     searchResFetcher()
@@ -31,7 +31,7 @@ export default function SearchResults() {
         const bookingsForDate = seat.bookings.filter((booking) => {
           const bookingDate = new Date(booking.date);
           return bookingDate.toDateString() === selectedDate.toDateString() && !booking.isOccupied;
-          
+
         });
 
         if (bookingsForDate.length === 0) {
@@ -43,7 +43,7 @@ export default function SearchResults() {
     return availableSeats;
   }
   const OpenSelSeat = (bus) => {
-    navigate('/bookTickets', { replace: true, state: { finalDate, bus, fromLocation, ToLocation } })
+    navigate('/bookTickets', { replace: true, state: { finalDate, bus, fromLocation, ToLocation  } })
   }
   return (
     <>
