@@ -7,7 +7,7 @@ import CurrentOffers from "./OrtherComps/CurrentOffers";
 
 export default function UserServices() {
   const navigate=useNavigate()
-  const [finalDate, setFinalDate] = useState(new Date());
+  const [finalDate, setFinalDate] = useState(new Date().toLocaleString().split(",")[0]);
   const [DatePickerVisiblity, setDatePickerVisiblity] = useState(false);
   const showit = () => {
     setDatePickerVisiblity(!DatePickerVisiblity);
@@ -106,7 +106,7 @@ export default function UserServices() {
                   value={ToLocation}
                   setter={setToLocation}
                   pos={pos}
-                  setvis={setSuggentionsFromVisiblity}
+                  setvis={setSuggentionsToVisiblity}
                 />
               )}
             </div>

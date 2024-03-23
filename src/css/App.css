@@ -501,13 +501,13 @@ svg>path{
   fill: green;
 }
 svg.pending>path {
-  fill: orange;
+  fill: orange!important;
 }
 svg.booked>path {
   fill: #d1d1d1;
 }
-svg.pending.selected>path{
-  fill: blue;
+svg.selected>path{
+  fill: blue!important;
 }
 
 

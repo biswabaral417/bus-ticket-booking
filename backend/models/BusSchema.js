@@ -22,6 +22,16 @@ const busSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  bookings:{
+    seatsBooked:[
+
+    ],
+    seatsSelected:[
+
+    ],
+    userSelected:[]
+
+  }
 });
 
 

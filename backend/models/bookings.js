@@ -2,22 +2,37 @@ const mongoose = require("mongoose");
 
 const bookingsSchema = new mongoose.Schema({
 
-    Date: [{
-        buses: [
-            {
-                BusNumber: {
+
+    date: {
+        type: String,
+        required: true
+    },
+    buses: [
+        {
+            BusNumber: {
+                type: String,
+                required: true,
+            },
+            seatsBooked: [
+
+            ],
+            seatsSelected: [{
+
+                userToken: {
                     type: String,
-                    required: true,
+                    required: true
                 },
-                seatsBooked:[
+                seatNumber: {
+                    type: String,
+                    required: true
 
-                ],
-                seatsSelected:[
+                }
+            }],
+            userSelected:[]
 
-                ]
-            }
-        ]
-    }]
+        }
+    ]
+
 });
 
 const Bookings = mongoose.model("Bookings", bookingsSchema);

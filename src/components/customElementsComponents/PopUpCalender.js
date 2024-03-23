@@ -41,7 +41,7 @@ export default function PopUpCalender({
         selectedYear,
         selectedMonth.number,
         Number(e.target.textContent),
-      ),
+      ).toLocaleString().split(",")[0]
     );
     setDatePickerVisiblity(false);
   };

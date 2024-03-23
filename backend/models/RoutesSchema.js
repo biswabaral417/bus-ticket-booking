@@ -18,7 +18,6 @@ const Routeschema = new mongoose.Schema({
     enum: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     required: true,
   }],
-
   From: {
     type: String,
     required: true,

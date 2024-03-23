@@ -9,7 +9,6 @@ const CustomDatePicker = ({ DatePickerVisiblity, setDatePickerVisiblity,finalDat
     e.stopPropagation();
     setDatePickerVisiblity(!DatePickerVisiblity);
   };
-  console.log(new Date(JSON.parse(JSON.stringify(finalDate))))
 
   return (
     <>
@@ -24,13 +23,14 @@ const CustomDatePicker = ({ DatePickerVisiblity, setDatePickerVisiblity,finalDat
       >
         <div>
           <p>
-            {finalDate.toString().split(" ")[2]}&nbsp;
+             {finalDate.split("/")[1]}&nbsp;
+            {console.log(finalDate.split("/")[0])}
             {monthName(
               2024,
-              Number(finalDate.toISOString().split("T")[0].split("-")[1]),
+              Number(finalDate.split("/")[0]),
             )}
           </p>
-          <p>{finalDate.toISOString().split("T")[0].split("-")[0]}</p>
+          <p>{finalDate.split("T")[0].split("/")[2]}</p>
         </div>
         <div>
           <button type="button" id="DatePickerBtn" onClick={dpv}></button>
