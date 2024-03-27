@@ -1,13 +1,15 @@
 import React from "react";
-import DatePicker from "../customElementsComponents/DatePicker";
+import DatePicker from "../../customElementsComponents/DatePicker";
 import { useState, useRef } from "react";
-import {useNavigate} from 'react-router-dom'
-import LocationSelector from "../customElementsComponents/LocationSelector";
-import CurrentOffers from "./OrtherComps/CurrentOffers";
+import { useNavigate } from "react-router-dom";
+import LocationSelector from "../../customElementsComponents/LocationSelector";
+import CurrentOffers from "../OrtherComps/CurrentOffers";
 
 export default function UserServices() {
-  const navigate=useNavigate()
-  const [finalDate, setFinalDate] = useState(new Date().toLocaleString().split(",")[0]);
+  const navigate = useNavigate();
+  const [finalDate, setFinalDate] = useState(
+    new Date().toLocaleString().split(",")[0],
+  );
   const [DatePickerVisiblity, setDatePickerVisiblity] = useState(false);
   const showit = () => {
     setDatePickerVisiblity(!DatePickerVisiblity);
@@ -42,18 +44,19 @@ export default function UserServices() {
     setToLocation(tempLocation);
   };
   const ShowSearchResults = () => {
-    navigate('/searchResults',
-      { replace:true,state:{finalDate, ToLocation, fromLocation} })
+    navigate("/searchResults", {
+      replace: true,
+      state: { finalDate, ToLocation, fromLocation },
+    });
+  };
 
-  }
-  
   return (
     <>
       <div style={{ background: "red", padding: "10px" }}>
         <h1 className="t_a_c" style={{ padding: "20px", color: "white" }}>
           Travel all Over Nepal
         </h1>
-        <form action="" onSubmit={ShowSearchResults} >
+        <form action="" onSubmit={ShowSearchResults}>
           <div id="Search_container" className="d-flx j_Content-C al_Items_C ">
             <div className="SearchlocationsDiv borderRightFormDiv formBg d-flx flx_column   j_Content-C">
               <label

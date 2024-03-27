@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import ccBgimg from "../../assets/images/5138237.jpg";
+import ccBgimg from "../../../assets/images/5138237.jpg";
 export default function CustomerCare() {
   const clipboardtext = useRef(null);
   const [copiedPopNotify, setCopiedPopNotify] = useState(false);

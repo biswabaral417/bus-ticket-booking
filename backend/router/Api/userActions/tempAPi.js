@@ -9,11 +9,11 @@ require("../../../DB/conn");
 //     From: "jhapa",
 //     to: "kathmandu"
 // })
-const data=new Bus({
-    routes:["65b25fab36378dfb77d497e2"],
-      agencyName: "agency",
-      busNumber: 'abc123',
-      busRows: 7,
-})
+const data = new Bus({
+  routes: ["65b25fab36378dfb77d497e2"],
+  agencyName: "agency",
+  busNumber: "abc123",
+  busRows: 7,
+});
 
-data.save()
+data.save();

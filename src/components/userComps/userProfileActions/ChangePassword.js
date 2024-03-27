@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom'
-import eyeSlashfill from "../../assets/icons/eye-slash-fill.svg";
-import eyefill from "../../assets/icons/eye-fill.svg";
+import { Link } from "react-router-dom";
+import eyeSlashfill from "../../../assets/icons/eye-slash-fill.svg";
+import eyefill from "../../../assets/icons/eye-fill.svg";
 
 export default function ChangePassword() {
   const ChangePasswordInps = (e) => {
@@ -10,24 +10,24 @@ export default function ChangePassword() {
       ...prevInput,
       [name]: value,
     }));
-  }
+  };
   const ChangeThePassword = async () => {
-    console.log(changePasswordinputs)
-    const res = await fetch('/api/changePassword', {
+    console.log(changePasswordinputs);
+    const res = await fetch("/api/changePassword", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(changePasswordinputs),
-      credentials: 'include'
-      
-    })
-    const data = await res.json()
-    console.log(data)
-  }
-  const [changePasswordinputs, setChangePasswordinputs] = useState({})
+      credentials: "include",
+    });
+    const data = await res.json();
+    console.log(data);
+  };
+  const [changePasswordinputs, setChangePasswordinputs] = useState({});
   const [inputTypeForPassword, setInputTypeForPassword] = useState("password");
-  const [iconForPasswordVisiblity, setIconForPasswordVisiblity] = useState(eyeSlashfill)
+  const [iconForPasswordVisiblity, setIconForPasswordVisiblity] =
+    useState(eyeSlashfill);
 
   const switchPasswordInpType = () => {
     setInputTypeForPassword(
@@ -36,7 +36,7 @@ export default function ChangePassword() {
     setIconForPasswordVisiblity(
       iconForPasswordVisiblity === eyefill ? eyeSlashfill : eyefill,
     );
-  }
+  };
 
   return (
     <>
@@ -56,7 +56,11 @@ export default function ChangePassword() {
                   placeholder="old Password"
                   name="oldPassword"
                   onChange={ChangePasswordInps}
-                  value={changePasswordinputs.oldPassword === undefined ? "" : changePasswordinputs.oldPassword}
+                  value={
+                    changePasswordinputs.oldPassword === undefined
+                      ? ""
+                      : changePasswordinputs.oldPassword
+                  }
                 />
                 <input
                   type={inputTypeForPassword}
@@ -64,17 +68,24 @@ export default function ChangePassword() {
                   placeholder="new password"
                   name="newPassword"
                   onChange={ChangePasswordInps}
-                  value={changePasswordinputs.newPassword === undefined ? "" : changePasswordinputs.newPassword}
+                  value={
+                    changePasswordinputs.newPassword === undefined
+                      ? ""
+                      : changePasswordinputs.newPassword
+                  }
                 />
-                <div className='d-flx al_Items_C'>
-
+                <div className="d-flx al_Items_C">
                   <input
                     type={inputTypeForPassword}
                     className="LoginInputFeilds"
                     placeholder="confirm new password"
                     name="confirmNewPassword"
                     onChange={ChangePasswordInps}
-                    value={changePasswordinputs.confirmNewPassword === undefined ? "" : changePasswordinputs.confirmNewPassword}
+                    value={
+                      changePasswordinputs.confirmNewPassword === undefined
+                        ? ""
+                        : changePasswordinputs.confirmNewPassword
+                    }
                   />
                   <button
                     id="PasswordShowHide"
@@ -86,16 +97,19 @@ export default function ChangePassword() {
                 </div>
               </div>
               <div>
-                <button onClick={ChangeThePassword} id="loginBtn">Change Password</button>
+                <button onClick={ChangeThePassword} id="loginBtn">
+                  Change Password
+                </button>
               </div>
             </div>
-
           </div>
           <div id="SignUpOptions">
             <h1>Bus Sewa </h1>
             <p>Connecting people around nepal</p>
             <h3>New Here?</h3>
-            <p>Create an account to get set travelling by clicking button below.</p>
+            <p>
+              Create an account to get set travelling by clicking button below.
+            </p>
             <Link to="/signUp">
               <button id="toSignUp">Sign Up</button>
             </Link>

@@ -1,32 +1,30 @@
 const dotenv = require("dotenv"); //always at top
 dotenv.config({ path: "./config.env" }); //path to hidden data always at top
 
-
 const express = require("express");
 const app = express();
 const path = require("path");
-const cors=require('cors')
-app.use(cors())
+const cors = require("cors");
+app.use(cors());
 
 const fs = require("fs");
 const https = require("https");
 const httpsOptions = {
   key: fs.readFileSync("./certs/sslCert/localhost.decrypted.key"),
   cert: fs.readFileSync("./certs/sslCert/localhost.crt"),
-
 };
 
 const server = https.createServer(httpsOptions, app);
 const cookieParser = require("cookie-parser");
-const IO = require('socket.io')(server, {
+const IO = require("socket.io")(server, {
   forceNew: true,
-  
+
   cors: {
-    origin: ['https://localhost:3000','https://localhost:9000','*'],
+    origin: ["https://localhost:3000", "https://localhost:9000", "*"],
     methods: ["GET", "POST"],
-    credentials: true  // Allow credentials (cookies) to be sent
+    credentials: true, // Allow credentials (cookies) to be sent
   },
-},)//creating websocket in sae port as server
+}); //creating websocket in sae port as server
 
 IO.engine.on("connection", (rawSocket) => {
   // if you need the certificate details (it is no longer available once the handshake is completed)
@@ -49,18 +47,25 @@ app.get(/^\/(?!api).*/, function (req, res) {
 
 require("./backend/DB/conn"); // adding db connection
 
-//app.use('paths')
+//app.use('paths')https APIs
 app.use(require("./backend/router/Api/userActions/SignUpApi"));
 app.use(require("./backend/router/Api/userActions/LoginApi"));
-app.use(require("./backend/router/Api/userActions/LogoutApi"))
+app.use(require("./backend/router/Api/userActions/LogoutApi"));
 app.use(require("./backend/router/Api/userActions/ChangePasswordApi"));
 app.use(require("./backend/router/Api/userActions/ChangeEmailApi"));
 
 app.use(require("./backend/router/Api/userActions/UserTokenTestApi"));
 app.use(require("./backend/router/Api/userActions/UserProfileApi"));
-app.use(require("./backend/router/Api/SearchBusesApi"));
+app.use(require("./backend/router/Api/Bookings/SearchBusesApi"));
+////
 
-const buspending = require('./backend/router/sockets/busPending')
+
+
+///socket APIs
+const buspending = require("./backend/router/sockets/busPending");
+const getBusData = require("./backend/router/sockets/getBusData");
+const clearSelectedSeats = require("./backend/router/sockets/clearSelected");
+const BookSelected = require("./backend/router/sockets/BookSelected");
 
 // require('./backend/router/Api/userActions/tempAPi')
 
@@ -68,37 +73,60 @@ server.listen(PORT, () => {
   console.log(`Server running on port ${PORT} (HTTPS)`);
 });
 
-IO.use((socket, next) => {
-  const token = socket.handshake.auth.token; // Retrieve the token from the handshake object
-  if (!token) {
-    return next(new Error('Authentication error: Token not provided'));
-  }
-  next(); // Call next() to continue processing
-});
-
 //sockets
 
-IO.on("connection", socket => {
-  const userToken=socket.handshake.auth.token
-  socket.on('seat-clicked', async (seatNumber, finalDate, selBus) => {
-    const busNo=selBus.busNumber
-    const seaTSelectedtNUM= await buspending({seatNumber, finalDate, selBus, userToken });
-    socket.to(`${busNo}-${finalDate}`).emit('busSeatSelected', seaTSelectedtNUM);
+IO.on("connection", (socket) => {
+  console.log(socket.id);
+  const userToken = socket.handshake.auth.token;
+  socket.on("seat-clicked", async (seatNumber, finalDate, selBus) => {
+    const busNo = selBus.busNumber;
+    const seaTSelectedtNUM = await buspending({
+      seatNumber,
+      finalDate,
+      selBus,
+      userToken,
+    });
+    socket
+      .to(`${busNo}-${finalDate}`)
+      .emit("busSeatSelected", seaTSelectedtNUM);
   });
-  socket.on('selectBus',({busNumber,finalDate})=>{
-    console.log("joined")
-    console.log(`${busNumber}-${finalDate}`)
-    socket.join(`${busNumber}-${finalDate}`)
-  })
+  socket.on("clearSelectedSeats",async (finalDate, busNumber) => {
+    const clearedSeats = await clearSelectedSeats({
+      busNumber,
+      userToken,
+      finalDate,
+    });
+    socket
+      .to(`${busNumber}-${finalDate}`)
+      .emit("busSeatsCleared", clearedSeats);
+  });
+  socket.on("bookSelectedSeats",async (finalDate, busNumber) => {
+    const bookedSeats =await BookSelected({
+      busNumber,
+      userToken,
+      finalDate,
+    });
+    //TODO
+    //generate ticket wit unpaid status//create sinature wit signaturefn i previouslu used in food sys 5th sem proj
+    //create signed form data with sucees url an failure url sent it to fend
+    //send form date to frontend
+    //initiate payments
+    //set if else for payment false and sucess
+
+    socket
+      .to(`${busNumber}-${finalDate}`)
+      .emit("busSeatsBooked", bookedSeats);
+  });
+  socket.on("selectBus", async ({ busNumber, finalDate }) => {
+    socket.join(`${busNumber}-${finalDate}`);
+    const busToSend = await getBusData({
+      finalDate,
+      busNumber: busNumber,
+      userToken,
+    });
+    socket.emit("reciveBus", busToSend);
+  });
 });
-
-
-
-
-
-
-
-
 
 
 IO.on("connect_error", (err) => {

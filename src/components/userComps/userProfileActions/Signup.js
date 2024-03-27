@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import eyeSlashfill from "../../assets/icons/eye-slash-fill.svg";
-import eyefill from "../../assets/icons/eye-fill.svg";
-import Bliptext from "../customElementsComponents/Bliptext";
+import eyeSlashfill from "../../../assets/icons/eye-slash-fill.svg";
+import eyefill from "../../../assets/icons/eye-fill.svg";
+import Bliptext from "../../customElementsComponents/Bliptext";
 
 export default function Signup() {
   const [inputTypeForPassword, setInputTypeForPassword] = useState("password");

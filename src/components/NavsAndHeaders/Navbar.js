@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { NavContext } from "../contexts/NavContext";
+import { NavContext } from "../../contexts/NavContext";
 import { NavLink } from "react-router-dom";
-import { UserContext } from "../contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext";
 export default function Navbar() {
-  const { Auth } = useContext(UserContext)
+  const { Auth } = useContext(UserContext);
   const { isDD, isDDvisible, setIsDDvisible } = useContext(NavContext);
   const hk = () => {
     setIsDDvisible(false);
@@ -12,8 +12,9 @@ export default function Navbar() {
   return (
     <nav id="theNavbar" className="d-flx al_Items_c">
       <ul
-        className={`${isDD ? `DD ${isDDvisible ? "d-flx" : "d_none"}` : "d-flx"
-          } al_Items_c`}
+        className={`${
+          isDD ? `DD ${isDDvisible ? "d-flx" : "d_none"}` : "d-flx"
+        } al_Items_c`}
         id="showHide"
       >
         <button
@@ -44,10 +45,7 @@ export default function Navbar() {
           </NavLink>
         </li>
         <li>
-          <NavLink
-            className="td_none"
-            to={`${Auth ? "/account" : "/login"}`}
-          >
+          <NavLink className="td_none" to={`${Auth ? "/account" : "/login"}`}>
             <button className="NavButton" id="myAccount"></button>
           </NavLink>
         </li>

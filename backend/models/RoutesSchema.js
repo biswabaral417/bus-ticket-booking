@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Routeschema = new mongoose.Schema({
   cost: {
     type: Number,
-    required: true
+    required: true,
   },
   StartTime: {
     type: String,
@@ -13,11 +13,21 @@ const Routeschema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  Days: [{
-    type: String,
-    enum: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    required: true,
-  }],
+  Days: [
+    {
+      type: String,
+      enum: [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
+      required: true,
+    },
+  ],
   From: {
     type: String,
     required: true,
@@ -25,7 +35,7 @@ const Routeschema = new mongoose.Schema({
   To: {
     type: String,
     required: true,
-  }
+  },
 });
 
 const Routes = mongoose.model("Routes", Routeschema);

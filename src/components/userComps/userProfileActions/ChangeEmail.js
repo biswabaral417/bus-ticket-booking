@@ -9,24 +9,21 @@ export default function ChangeEmail() {
       ...prevInput,
       [name]: value,
     }));
-  }
+  };
   const ChangeTheEmail = async () => {
-    console.log(changeEmailInputs)
-    const res = await fetch('/api/changeEmail', {
+    console.log(changeEmailInputs);
+    const res = await fetch("/api/changeEmail", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(changeEmailInputs),
-      credentials: 'include'
-      
-    })
-    const data = await res.json()
-    console.log(data)
-  }
-  const [changeEmailInputs, setChangeEmailInputs] = useState({})
-
-  
+      credentials: "include",
+    });
+    const data = await res.json();
+    console.log(data);
+  };
+  const [changeEmailInputs, setChangeEmailInputs] = useState({});
 
   return (
     <>
@@ -41,45 +38,58 @@ export default function ChangeEmail() {
             >
               <div className="">
                 <input
-                  type='text'
+                  type="text"
                   className="LoginInputFeilds"
                   placeholder="old Email"
                   name="oldEmail"
                   onChange={ChangeEmailInps}
-                  value={changeEmailInputs.oldEmail === undefined ? "" : changeEmailInputs.oldEmail}
+                  value={
+                    changeEmailInputs.oldEmail === undefined
+                      ? ""
+                      : changeEmailInputs.oldEmail
+                  }
                 />
                 <input
-                  type='text'
+                  type="text"
                   className="LoginInputFeilds"
                   placeholder="new email"
                   name="newEmail"
                   onChange={ChangeEmailInps}
-                  value={changeEmailInputs.newEmail === undefined ? "" : changeEmailInputs.newEmail}
+                  value={
+                    changeEmailInputs.newEmail === undefined
+                      ? ""
+                      : changeEmailInputs.newEmail
+                  }
                 />
-                <div className='d-flx al_Items_C'>
-
+                <div className="d-flx al_Items_C">
                   <input
-                    type='text'
+                    type="text"
                     className="LoginInputFeilds"
                     placeholder="confirm new Email"
                     name="confirmNewEmail"
                     onChange={ChangeEmailInps}
-                    value={changeEmailInputs.confirmNewEmail === undefined ? "" : changeEmailInputs.confirmNewEmail}
+                    value={
+                      changeEmailInputs.confirmNewEmail === undefined
+                        ? ""
+                        : changeEmailInputs.confirmNewEmail
+                    }
                   />
-                  
                 </div>
               </div>
               <div>
-                <button onClick={ChangeTheEmail} id="loginBtn">Change Email</button>
+                <button onClick={ChangeTheEmail} id="loginBtn">
+                  Change Email
+                </button>
               </div>
             </div>
-
           </div>
           <div id="SignUpOptions">
             <h1>Bus Sewa </h1>
             <p>Connecting people around nepal</p>
             <h3>New Here?</h3>
-            <p>Create an account to get set travelling by clicking button below.</p>
+            <p>
+              Create an account to get set travelling by clicking button below.
+            </p>
             <Link to="/signUp">
               <button id="toSignUp">Sign Up</button>
             </Link>
@@ -87,4 +97,5 @@ export default function ChangeEmail() {
         </div>
       </div>
     </>
-  );}
+  );
+}

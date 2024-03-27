@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import eyeSlashfill from "../../assets/icons/eye-slash-fill.svg";
-import eyefill from "../../assets/icons/eye-fill.svg";
-import Bliptext from "../customElementsComponents/Bliptext";
-import { UserContext } from "../../contexts/UserContext";
+import eyeSlashfill from "../../../assets/icons/eye-slash-fill.svg";
+import eyefill from "../../../assets/icons/eye-fill.svg";
+import Bliptext from "../../customElementsComponents/Bliptext";
+import { UserContext } from "../../../contexts/UserContext";
 
 export default function Login() {
-  const navigate=useNavigate()
-  const {setAuth}=useContext(UserContext)
+  const navigate = useNavigate();
+  const { setAuth } = useContext(UserContext);
   const [inputTypeForPassword, setInputTypeForPassword] = useState("password");
   const [iconForPasswordVisiblity, setIconForPasswordVisiblity] =
     useState(eyeSlashfill);
@@ -40,17 +40,17 @@ export default function Login() {
         body: JSON.stringify(loginInputs),
       });
 
-      const data =await res.json();
-      console.log(data)
-      console.log(res.status)
+      const data = await res.json();
+      console.log(data);
+      console.log(res.status);
 
       if (res.status === 201) {
         setResponseData(data.success);
-        setAuth(true)
+        setAuth(true);
         setBlipVisiblity(true);
         setTimeout(() => {
           setBlipVisiblity(false);
-          navigate('/account')
+          navigate("/account");
         }, 1500);
       } else {
         setResponseData(data.error);
@@ -59,8 +59,8 @@ export default function Login() {
           setBlipVisiblity(false);
         }, 1500);
       }
-    } catch (error){
-      console.log(error)
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
@@ -72,7 +72,13 @@ export default function Login() {
           className="d-flx flx_column"
           style={{ padding: "20px" }}
         >
-          <input type="text" className="LoginInputFeilds" onChange={ChangeLoginInps} name="email" placeholder="email" />
+          <input
+            type="text"
+            className="LoginInputFeilds"
+            onChange={ChangeLoginInps}
+            name="email"
+            placeholder="email"
+          />
           <div className="d-flx al_Items_C">
             <input
               type={inputTypeForPassword}
@@ -90,11 +96,12 @@ export default function Login() {
             ></button>
           </div>
           <div>
-            <button onClick={login} id="loginBtn">Login</button>
+            <button onClick={login} id="loginBtn">
+              Login
+            </button>
           </div>
         </div>
         {blipVisiblity && <Bliptext text={responseData} />}
-
       </div>
       <div id="SignUpOptions">
         <h1>Bus Sewa </h1>

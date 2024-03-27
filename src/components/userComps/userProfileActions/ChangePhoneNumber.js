@@ -9,24 +9,21 @@ export default function ChangePhoneNumber() {
       ...prevInput,
       [name]: value,
     }));
-  }
+  };
   const ChangeThePhoneNumber = async () => {
-    console.log(changePhoneNumberInputs)
-    const res = await fetch('/api/changePhoneNumber', {
+    console.log(changePhoneNumberInputs);
+    const res = await fetch("/api/changePhoneNumber", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(changePhoneNumberInputs),
-      credentials: 'include'
-      
-    })
-    const data = await res.json()
-    console.log(data)
-  }
-  const [changePhoneNumberInputs, setChangePhoneNumberInputs] = useState({})
-
-  
+      credentials: "include",
+    });
+    const data = await res.json();
+    console.log(data);
+  };
+  const [changePhoneNumberInputs, setChangePhoneNumberInputs] = useState({});
 
   return (
     <>
@@ -41,45 +38,59 @@ export default function ChangePhoneNumber() {
             >
               <div className="">
                 <input
-                  type='text'
+                  type="text"
                   className="LoginInputFeilds"
                   placeholder="old PhoneNumber"
                   name="oldPhoneNumber"
                   onChange={ChangePhoneNumberInps}
-                  value={changePhoneNumberInputs.oldPhoneNumber === undefined ? "" : changePhoneNumberInputs.oldPhoneNumber}
+                  value={
+                    changePhoneNumberInputs.oldPhoneNumber === undefined
+                      ? ""
+                      : changePhoneNumberInputs.oldPhoneNumber
+                  }
                 />
                 <input
-                  type='text'
+                  type="text"
                   className="LoginInputFeilds"
                   placeholder="new phone number"
                   name="newPhoneNumber"
                   onChange={ChangePhoneNumberInps}
-                  value={changePhoneNumberInputs.newPhoneNumber === undefined ? "" : changePhoneNumberInputs.newPhoneNumber}
+                  value={
+                    changePhoneNumberInputs.newPhoneNumber === undefined
+                      ? ""
+                      : changePhoneNumberInputs.newPhoneNumber
+                  }
                 />
-                <div className='d-flx al_Items_C'>
-
+                <div className="d-flx al_Items_C">
                   <input
-                    type='text'
+                    type="text"
                     className="LoginInputFeilds"
                     placeholder="confirm new PhoneNumber"
                     name="confirmNewPhoneNumber"
                     onChange={ChangePhoneNumberInps}
-                    value={changePhoneNumberInputs.confirmNewPhoneNumber === undefined ? "" : changePhoneNumberInputs.confirmNewPhoneNumber}
+                    value={
+                      changePhoneNumberInputs.confirmNewPhoneNumber ===
+                      undefined
+                        ? ""
+                        : changePhoneNumberInputs.confirmNewPhoneNumber
+                    }
                   />
-                  
                 </div>
               </div>
               <div>
-                <button onClick={ChangeThePhoneNumber} id="loginBtn">Change PhoneNumber</button>
+                <button onClick={ChangeThePhoneNumber} id="loginBtn">
+                  Change PhoneNumber
+                </button>
               </div>
             </div>
-
           </div>
           <div id="SignUpOptions">
             <h1>Bus Sewa </h1>
             <p>Connecting people around nepal</p>
             <h3>New Here?</h3>
-            <p>Create an account to get set travelling by clicking button below.</p>
+            <p>
+              Create an account to get set travelling by clicking button below.
+            </p>
             <Link to="/signUp">
               <button id="toSignUp">Sign Up</button>
             </Link>
@@ -87,4 +98,5 @@ export default function ChangePhoneNumber() {
         </div>
       </div>
     </>
-  );}
+  );
+}

@@ -1,27 +1,27 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserContext } from "../../contexts/UserContext";
-import Bliptext from "../customElementsComponents/Bliptext";
+import { UserContext } from "../../../contexts/UserContext";
+import Bliptext from "../../customElementsComponents/Bliptext";
 
 export default function UserAccount() {
-  const navigate=useNavigate()
-  const { userData } = useContext(UserContext)
+  const navigate = useNavigate();
+  const { userData } = useContext(UserContext);
   const [responseData, setResponseData] = useState(null);
   const [blipVisiblity, setBlipVisiblity] = useState(false);
   const Logout = async () => {
-    const res = await fetch('/api/logout', {
-      method: 'GET',
+    const res = await fetch("/api/logout", {
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      credentials: "include"
-    })
-    const data = await res.json()
+      credentials: "include",
+    });
+    const data = await res.json();
     if (res.status === 200) {
       setResponseData(data.success);
       setBlipVisiblity(true);
       setTimeout(() => {
-        navigate('/login')
+        navigate("/login");
         setBlipVisiblity(false);
       }, 1500);
     } else {
@@ -31,8 +31,8 @@ export default function UserAccount() {
         setBlipVisiblity(false);
       }, 1500);
     }
-    console.log(data)
-  }
+    console.log(data);
+  };
   return (
     <div style={{ padding: "20px" }} className="d-flx">
       <div id="ProfileContainerInner">
@@ -85,7 +85,13 @@ export default function UserAccount() {
               </Link>
             </li>
             <li>
-              <button className="UA_button" style={{ cursor: 'pointer' }} onClick={Logout}>Log Out</button>
+              <button
+                className="UA_button"
+                style={{ cursor: "pointer" }}
+                onClick={Logout}
+              >
+                Log Out
+              </button>
             </li>
           </ul>
           {blipVisiblity && <Bliptext text={responseData} />}

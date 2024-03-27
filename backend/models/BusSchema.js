@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 
 const busSchema = new mongoose.Schema({
-  routes: [{
-    type: mongoose.Schema.ObjectId,
-    required: true,
-  }],
+  routes: [
+    {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+  ],
   agencyName: {
     type: String,
     required: true,
@@ -22,19 +24,12 @@ const busSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  bookings:{
-    seatsBooked:[
-
-    ],
-    seatsSelected:[
-
-    ],
-    userSelected:[]
-
-  }
+  bookings: {
+    seatsBooked: [],
+    seatsSelected: [],
+    userSelected: [],
+  },
 });
-
-
 
 const Bus = mongoose.model("Bus", busSchema);
 

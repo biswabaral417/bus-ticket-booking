@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavContext } from "../contexts/NavContext";
+import { NavContext } from "../../contexts/NavContext";
 import Navbar from "./Navbar";
 
 export default function Header() {

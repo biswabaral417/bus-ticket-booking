@@ -37,11 +37,9 @@ export default function PopUpCalender({
   const handleDateSelect = (e) => {
     e.stopPropagation();
     setFinalDate(
-      new Date(
-        selectedYear,
-        selectedMonth.number,
-        Number(e.target.textContent),
-      ).toLocaleString().split(",")[0]
+      new Date(selectedYear, selectedMonth.number, Number(e.target.textContent))
+        .toLocaleString()
+        .split(",")[0],
     );
     setDatePickerVisiblity(false);
   };
