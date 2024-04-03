@@ -9,10 +9,6 @@ const Routeschema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  EndTime: {
-    type: String,
-    required: true,
-  },
   Days: [
     {
       type: String,

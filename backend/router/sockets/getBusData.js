@@ -8,7 +8,7 @@ const getBusData = async ({ finalDate, busNumber, userToken }) => {
       path: "routes",
       model: "Routes",
     });
-
+    // console.log(selectedBus)
     if (!selectedBus) {
       return;
     }
@@ -26,7 +26,7 @@ const getBusData = async ({ finalDate, busNumber, userToken }) => {
       selectedBus.bookings = {
         seatsBooked: [],
         seatsSelected: [],
-        userSelectedSeats: [],
+        userSelected: [],
       };
     } else {
       const getUserselectedSeats = bookingsForBus.seatsSelected
@@ -34,14 +34,14 @@ const getBusData = async ({ finalDate, busNumber, userToken }) => {
         .map((seat) => seat.seatNumber);
       // Map to get array of seat numbers
       selectedBus.bookings = {
-        seatsBooked: bookingsForBus.seatsBooked.map((seat)=>seat.seatNumber),
+        seatsBooked: bookingsForBus.seatsBooked,
         seatsSelected: bookingsForBus.seatsSelected.map(
           (seat) => seat.seatNumber,
         ),
         userSelected: getUserselectedSeats ? getUserselectedSeats : [],
       };
-      return selectedBus;
     }
+    return selectedBus;
   } catch (error) {
     console.error("Error in busPending:", error);
   }

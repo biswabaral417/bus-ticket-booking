@@ -1,15 +1,16 @@
+const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
 
 const TicketSchema = new mongoose.Schema({
+  bookedBy:{
+    type:ObjectId,
+    required:true
+  },
   AgencyName: {
     type: String,
     required: true,
   },
   BusNumber: {
-    type: String,
-    required: true,
-  },
-  SeatName: {
     type: String,
     required: true,
   },
@@ -21,7 +22,9 @@ const TicketSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  Price: {
+  SeatsArray:[
+  ],
+  TotalPrice: {
     type: Number,
     required: true,
   },
@@ -33,10 +36,10 @@ const TicketSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  status: {
+  bookingStatus: {
     type: String,
-    enum: ["available", "booked", "pending"],
-    default: "available",
+    enum: ["initiated", "paid"],
+    default: "initiated",
   },
 });
 

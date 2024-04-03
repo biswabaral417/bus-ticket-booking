@@ -14,6 +14,7 @@ SearchBuses.post("/api/searchbuses", async (req, res) => {
     });
     // Use the $in operator to find buses with routes matching the search query
     let BusesInRoute = await Bus.find({
+      isDisabled:false,
       routes: {
         $in: await BusRoutes.find({
           From: fromLocation,
@@ -26,6 +27,8 @@ SearchBuses.post("/api/searchbuses", async (req, res) => {
       model: "Routes",
     });
 
+
+    console.log(BusesInRoute)
     // Retrieve bookings for the given date
     let bookingsForDate = await Bookings.findOne({ date: finalDate });
 

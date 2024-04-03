@@ -13,7 +13,6 @@ const busPending = async ({ seatNumber, finalDate, selBus, userToken }) => {
       return;
     }
     const bookingDate = await Bookings.findOne({ date: finalDate });
-
     if (!bookingDate) {
       const newBooking = new Bookings({
         date: finalDate,
@@ -33,15 +32,15 @@ const busPending = async ({ seatNumber, finalDate, selBus, userToken }) => {
     const busPending = bookingDate.buses.find(
       (bus) => bus.BusNumber === selectedBus.busNumber,
     );
+
     if (!busPending) {
       bookingDate.buses = [
         {
-          busNumber: selectedBus.busNumber,
+          BusNumber: selectedBus.busNumber,
           seatsSelected: [{ userToken: userToken, seatNumber: seatNumber }],
         },
       ];
       await bookingDate.save();
-
       return seatNumber;
     }
 
@@ -51,13 +50,14 @@ const busPending = async ({ seatNumber, finalDate, selBus, userToken }) => {
     }
 
     // If the seat is already selected by the same user, remove it from seatsSelected
-    if (busPending.seatsSelected.some((item) =>item.seatNumber === seatNumber && item.userToken === userToken)) {
+    if (busPending.seatsSelected.some((item) => item.seatNumber === seatNumber && item.userToken === userToken)) {
       busPending.seatsSelected = busPending.seatsSelected.filter(
         (item) =>
           !(item.seatNumber === seatNumber && item.userToken === userToken),
       );
       await bookingDate.save();
       return seatNumber;
+
     } else {
       // Add the seat to seatsSelected
       busPending.seatsSelected.push({

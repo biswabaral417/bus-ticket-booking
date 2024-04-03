@@ -1,24 +1,28 @@
 import "./css/App.css";
 import "./css/dark.css";
 import "./css/light.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import UserHome from "./components/userComps/Pages/UserHome";
-import Header from "./components/NavsAndHeaders/Header";
-import UserServices from "./components/userComps/Pages/UserServices";
-import UserAccount from "./components/userComps/userProfileActions/UserAccount";
-import UserTickets from "./components/userComps/Pages/UserTickets";
-import CustomerCare from "./components/userComps/Pages/CustomerCare";
-import NavContextProvider from "./contexts/NavContext";
-import Login from "./components/userComps/userProfileActions/Login";
-import Signup from "./components/userComps/userProfileActions/Signup";
-import UserContextProvider from "./contexts/UserContext";
-import ChangePassword from "./components/userComps/userProfileActions/ChangePassword";
-import ChangeEmail from "./components/userComps/userProfileActions/ChangeEmail";
-import ChangeAddress from "./components/userComps/userProfileActions/ChangeAddress";
-import ChangePhoneNumber from "./components/userComps/userProfileActions/ChangePhoneNumber";
-import ChangeProfileImage from "./components/userComps/userProfileActions/ChangeProfileImage";
-import SearchResults from "./components/userComps/OrtherComps/SearchResults";
-import BookTicketsFather from "./components/userComps/BookingComps/BookTicketsFather";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import UserContextProvider from "./Client/contexts/UserContext"
+import NavContextProvider from "./Client/contexts/NavContext"
+import Header from "./Client/Components/NavsAndHeaders/Header"
+import UserTickets from "./Client/Components/userComps/Pages/UserTickets"
+import UserAccount from "./Client/Components/userComps/userProfileActions/UserAccount"
+import ChangePassword from './Client/Components/userComps/userProfileActions/ChangePassword'
+import ChangeEmail from './Client/Components/userComps/userProfileActions/ChangeEmail'
+import ChangeAddress from './Client/Components/userComps/userProfileActions/ChangeAddress'
+import ChangePhoneNumber from './Client/Components/userComps/userProfileActions/ChangePhoneNumber'
+import ChangeProfileImage from './Client/Components/userComps/userProfileActions/ChangeProfileImage'
+import UserHome from "./Client/Components/userComps/Pages/UserHome"
+import UserServices from "./Client/Components/userComps/Pages/UserServices"
+import CustomerCare from "./Client/Components/userComps/Pages/CustomerCare"
+import Login from "./Client/Components/userComps/userProfileActions/Login"
+import Signup from "./Client/Components/userComps/userProfileActions/Signup"
+import SearchResults from "./Client/Components/userComps/OrtherComps/SearchResults"
+import BookTicketsFather from "./Client/Components/userComps/BookingComps/BookTicketsFather"
+import AdminHome from "./Admin/components/AdminHome"
+import AddBus from "./Admin/components/AddBus";
+import AddRoutes from "./Admin/components/AddRoutes";
+import ModifyBus from "./Admin/components/modifyBus";
 function App() {
   return (
     <BrowserRouter>
@@ -40,11 +44,15 @@ function App() {
           <Route path="/changePhone" element={<ChangePhoneNumber />} />
           <Route path="/changeProfileImage" element={<ChangeProfileImage />} />
           <Route path="/searchResults" element={<SearchResults />} />
-
           <Route path="/bookTickets" element={<BookTicketsFather />} />
+          <Route path="/admin" element={<AdminHome />} />
+          <Route path="/admin/addbus" element={<AddBus/>}   />
+          <Route path="/admin/addroutes" element={<AddRoutes/>}   />
+          <Route path="/admin/modifybus" element={<ModifyBus/>}   />
         </Routes>
       </UserContextProvider>
     </BrowserRouter>
+
   );
 }
 

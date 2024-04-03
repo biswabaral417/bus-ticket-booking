@@ -158,11 +158,87 @@ nav {
   transition: transform 200ms;
   transform: scale(1.2);
 }
-
 #Search_container {
   position: relative;
   margin: auto;
-  width: 720px;
+  flex-wrap: wrap;
+  width: 220px;
+}
+#Search_container > :last-child {
+  display: block;
+  border-radius: 10px;
+}
+
+#Search_container > :nth-child(3) {
+  padding: 5px 15px 5px 25px;
+  border-radius: 10px;
+}
+
+@media only screen and (min-width: 740px) {
+  #Search_container {
+    position: relative;
+    margin: auto;
+    flex-wrap: nowrap;
+    width: 720px;
+  }
+  #Search_container > :last-child {
+    border-radius: 0px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+
+  #Search_container > :first-child {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+  }
+  #Search_container > :nth-child(3) {
+    border-radius: 0px;
+  }
+  #switch {
+    z-index: 10;
+    position: absolute;
+    left: 226px;
+    background: #fff;
+    background-image: url(../assets/icons/arrow-left-right.svg);
+    height: 30px;
+    width: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 4px 2px #d1d1d1;
+  }
+}
+@media only screen and (max-width: 740px) {
+  #Search_container > :last-child {
+    display: block;
+    border-radius: 10px;
+    height: fit-content !important;
+    margin-top: 20px;
+  }
+  #Search_container > :first-child {
+    border-radius: 10px;
+    margin-bottom: 20px;
+    height: fit-content;
+  }
+  #Search_container > :nth-child(3) {
+    height: fit-content;
+    margin-bottom: 20px;
+  }
+  #switch {
+    z-index: 10;
+    position: absolute;
+    top: 58px;
+    background: #fff;
+    background-image: url(../assets/icons/arrow-left-right.svg);
+    height: 40px;
+    width: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 4px 2px #d1d1d1;
+  }
 }
 
 .locationsInp {
@@ -202,20 +278,6 @@ nav {
   background: white;
 }
 
-#Search_container > :first-child {
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
-}
-
-#Search_container > :nth-child(3) {
-  padding: 5px 15px 5px 25px;
-}
-
-#Search_container > :last-child {
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
-}
-
 #DatePickerBtn {
   height: 20px;
   width: 20px;
@@ -227,21 +289,6 @@ nav {
 #DatePickerBtn:hover {
   transition: transform 200ms;
   transform: scale(1.3);
-}
-
-#switch {
-  z-index: 10;
-  position: absolute;
-  left: 226px;
-  background: #fff;
-  background-image: url(../assets/icons/arrow-left-right.svg);
-  height: 30px;
-  width: 30px;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 0 4px 2px #d1d1d1;
 }
 
 #switch:hover {
@@ -256,7 +303,6 @@ nav {
 
 .d_grid {
   display: grid;
-  width: 400px;
 }
 
 .d_g_7 {
@@ -492,8 +538,8 @@ header {
 }
 
 .busSeat > svg {
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 50px;
 }
 
 svg > path {
@@ -547,4 +593,165 @@ svg.booked > path {
 .bookingsBox {
   padding: 20px;
   margin: 20px;
+}
+.ticketh3 {
+  padding: 5px;
+  width: 400px;
+}
+.border-1pb {
+  padding: 10px;
+  margin: 20px;
+  box-shadow: #555 0px 0px 5px;
+  border-radius: 20px;
+}
+.autofit_ticket {
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 500px));
+}
+
+.theRoutesChoser {
+  position: absolute;
+  left: 100px;
+  background: #cecdcd91;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.theRoutesChoser > button {
+  border-radius: 8px;
+  padding: 10px;
+  background: #faf9f9;
+}
+
+#LocationselectorPopup {
+  background: #f1f1f1;
+  border-radius: 10px;
+  top: 80px;
+}
+
+#LocationselectorPopup > button {
+  padding: 5px;
+  border-bottom: 1px solid #a1a1a1;
+  cursor: pointer;
+}
+
+#LocationselectorPopup > :last-child {
+  border-bottom: none;
+}
+
+#LocationselectorPopup > button:hover {
+  background: #fff;
+}
+.theChosenRoute {
+  width: 400px;
+  border-radius: 20px;
+}
+.theChosenRoute > * {
+  padding: 5px 25px;
+}
+.theAddBusComp label {
+  padding: 5px;
+  display: inline-block;
+  width: 150px;
+}
+
+.theAddBusComp {
+  padding: 30px;
+}
+#addBusButton,
+#addRoutesButton {
+  border: 1px solid red;
+  padding: 5px 20px;
+  font-size: 30px;
+  border-radius: 15px;
+  background: #f6f7da;
+  cursor: pointer;
+}
+LocationselectorPopup #addBusButton:hover,
+#addRoutesButton:hover {
+  box-shadow: 0 0 5px 0px rgb(253, 174, 174);
+  scale: 1.1;
+  transition: scale ease-in-out 100ms;
+}
+.AddRoutesComponent {
+  padding: 30px;
+}
+.AddRoutesComponent label {
+  padding: 5px;
+  display: inline-block;
+  width: 150px;
+}
+
+.ToAddWeekDaysBtn,
+.AddedWeekDayaComp {
+  background: #d3d1d1;
+  width: 180px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+.ToAddWeekDaysBtn > button,
+.AddedWeekDayaComp > button {
+  background: #f3f2f2;
+  width: 24px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.toAdd,
+.added {
+  display: flex;
+  width: 650px;
+  flex-wrap: wrap;
+}
+#FromLocationInpSuggestion,
+#toToLocationInpSuggestion {
+  position: absolute;
+  left: 200px;
+  background: #f1f1f1;
+  width: 150px;
+  height: 100px;
+  border-radius: 10px;
+  z-index: 5;
+  overflow-y: scroll;
+  /* top: 80px; */
+}
+#FromLocationInpSuggestion > button,
+#toToLocationInpSuggestion > button {
+  padding: 5px;
+  border-bottom: 1px solid #a1a1a1;
+  cursor: pointer;
+}
+#FromLocationInpSuggestion > :last-child,
+#toToLocationInpSuggestion > :last-child {
+  border-bottom: none;
+}
+#FromLocationInpSuggestion > button:hover,
+#toToLocationInpSuggestion > button:hover {
+  background: #fff;
+}
+/*
+#LocationselectorPopup {
+  background: #f1f1f1;
+  border-radius: 10px;
+  top: 80px;
+}
+
+#LocationselectorPopup > button {
+  padding: 5px;
+  border-bottom: 1px solid #a1a1a1;
+  cursor: pointer;
+}
+
+#LocationselectorPopup > :last-child {
+  border-bottom: none;
+}
+
+#LocationselectorPopup > button:hover {
+  background: #fff;
+}*/
+.ps_rel {
+  position: relative;
 }

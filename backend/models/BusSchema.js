@@ -24,6 +24,12 @@ const busSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  isDisabled:{
+    type:Boolean,
+    default:false,
+    required:true
+
+  },
   bookings: {
     seatsBooked: [],
     seatsSelected: [],
